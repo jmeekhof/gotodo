@@ -1,0 +1,32 @@
+= To Do Application
+This is my learning application. I'm building a simple app with React, Go and MongoDB.
+There is a `docker-compose.yaml` file that sets up a local dev server.
+
+== MongoDB
+The database is Mongo. Create a local user that has `readWrite` access.
+
+[source,json]
+----
+{
+    user: 'test',
+    pwd: passwordPrompt(),
+    roles: [
+        {
+            role: 'readWrite',
+            db: 'test'
+        }
+    ]
+}
+----
+
+== Go Server
+The Go mid-tier needs to create a connection string in order to connect to the Mongo database.
+Set the appropriate environment variables on the mid-tier container.
+
+[source]
+----
+MONGO_HOST=db
+MONGO_USER=todo
+MONGO_PASSWORD=xxxxxxxxx
+MONGO_DATABASE=test
+----
