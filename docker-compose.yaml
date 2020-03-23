@@ -1,8 +1,15 @@
 version: "3.7"
 services:
-    #    front:
-    #    build:
-    #        context:
+    client:
+        build:
+           context: ./client
+        volumes:
+            - type: volume
+              source: node_mods
+              target: '/app/node_modules'
+            - type: bind
+              source: ./client
+              target: '/app'
     server:
         build:
             context: ./server
@@ -30,3 +37,4 @@ services:
               target: /data/db
 volumes:
     dbdata:
+    node_mods:
