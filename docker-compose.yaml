@@ -24,7 +24,6 @@ services:
             - MONGO_DATABASE
         ports:
             - "8080:8080"
-
         links:
             - db
         networks:
@@ -35,6 +34,8 @@ services:
             - "27017:27017"
               #- "27018:27018"
               #- "27019:27019"
+        networks:
+            - default
         volumes:
             - type: volume
               source: dbdata
