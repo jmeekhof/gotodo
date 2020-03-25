@@ -3,6 +3,8 @@ services:
     client:
         build:
            context: ./client
+           args:
+               - npm_config_registry=$npm_config_registry
         volumes:
             - type: volume
               source: node_mods
@@ -37,6 +39,9 @@ services:
             - type: volume
               source: dbdata
               target: /data/db
+            - type: bind
+              source: ./build/mongo/docker-entrypoint-initdb.d
+              target: /docker-entrypoint-initdb.d
 volumes:
     dbdata:
     node_mods:
