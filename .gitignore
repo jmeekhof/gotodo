@@ -1,3 +1,4 @@
 .gradle
 .env.local
 build
+gradle-local.properties
