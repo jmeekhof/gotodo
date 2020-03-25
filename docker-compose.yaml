@@ -15,9 +15,11 @@ services:
             context: ./server
         depends_on:
             - db
-        env_file: ./server/.env.local
         environment:
-            - MONGO_HOST=db
+            - MONGO_HOST
+            - MONGO_USER
+            - MONGO_PASSWORD
+            - MONGO_DATABASE
         ports:
             - "8080:8080"
 
