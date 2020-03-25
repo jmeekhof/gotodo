@@ -7,6 +7,8 @@ services:
                - npm_config_registry=$npm_config_registry
         ports:
             - "3000:3000"
+        networks:
+            - frontend
         volumes:
             - type: volume
               source: node_mods
@@ -26,18 +28,17 @@ services:
             - MONGO_DATABASE
         ports:
             - "8080:8080"
-        links:
-            - db
         networks:
-            - default
+            - backend
+            - frontend
     db:
         image: mongo:latest
         ports:
-            - "27017:27017"
+            - "27017"
               #- "27018:27018"
               #- "27019:27019"
         networks:
-            - default
+            - backend
         volumes:
             - type: volume
               source: dbdata
@@ -48,3 +49,6 @@ services:
 volumes:
     dbdata:
     node_mods:
+networks:
+    frontend:
+    backend:
