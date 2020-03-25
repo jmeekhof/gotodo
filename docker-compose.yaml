@@ -5,6 +5,8 @@ services:
            context: ./client
            args:
                - npm_config_registry=$npm_config_registry
+        ports:
+            - "3000:3000"
         volumes:
             - type: volume
               source: node_mods
